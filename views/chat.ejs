@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head'); %>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script>
+    const name = getCurrentUser().name
+    const query = 'name=' + name;
+    const socket = io(':8080', {'path': '/chat', query, 'forceNew': true, 'reconnection': false, transports:['websocket']});
+    socket.on('send_message', (payload) => {
+        payload = JSON.parse(payload);
+        const name = payload.name;
+        moment().utcOffset(8);
+        const time = moment().utc(payload.ts).format('LLLL');
+        const  msg = payload.message.msg;
+        appendData({name, time, msg});
+    });
+
+    function Send() {
+        let msg = document.querySelector('#msg').value;
+        if (!msg) {
+            alert('please input message');
+            return;
+        }
+
+        let data = {
+            msg: msg,
+        };
+        socket.emit('send_message', data);
+        document.querySelector('#msg').value = '';
+    }
+    function appendData(obj) {
+        let el = document.querySelector('.chats');
+        let html = el.innerHTML;
+        html += `
+                <div class="chat">
+                    <div class="group">
+                        <div class="name">${obj.name}：</div>
+                        <div class="msg">${obj.msg}</div>
+                    </div>
+                    <div class="time">${obj.time}</div>
+                </div>
+                `;
+        el.innerHTML = html.trim();
+    }
+</script>
+<body>
+    <%- include('menu'); %>
+<div class="container-fluid bg-3 text-center">
+  <div>
+    <div class="chats">
+    </div>
+    <div class="message">
+        <input id="msg" type="text" placeholder="input the message" />
+        <button type="button" onclick="Send()">send</button>
+      </div>
+</div>
+</body>
+<%- include('script'); %>
+</html>

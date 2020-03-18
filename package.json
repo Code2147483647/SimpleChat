@@ -1,0 +1,43 @@
+{
+  "name": "simplechat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "John",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": {
+      "testResultsProcessor": "jest-junit",
+      "collectCoverage": true,
+      "coverageReporters": [
+        "json",
+        "html",
+        "text"
+      ],
+      "testPathIgnorePatterns": [
+        "node_modules",
+        "e2eTest"
+      ],
+      "testEnvironment": "node",
+      "clearMocks": true
+    },
+    "jest-cli": "^25.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "is-my-json-valid": "^2.20.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.5",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "sugar": "^2.0.6"
+  }
+}
