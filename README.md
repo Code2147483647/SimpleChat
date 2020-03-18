@@ -1,9 +1,13 @@
 # SimpleChat assignment
 
 Simple chat room and manage member
+
 demo accounts:
+
 acc/pwd
+
 admin: admin@myAdmin.com Aa12345678!!
+
 member: testUI1@g.com/111111
 
 ## Environment
