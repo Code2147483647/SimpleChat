@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR (64) NOT NULL,
     role VARCHAR (6) NOT NULL,
     PRIMARY KEY (id),
-    UNIQUE (email)
-    INDEX email_idx (email ASC)
+    UNIQUE (email),
+    INDEX email_idx (email ASC),
+    INDEX role_idx (role ASC)
 );
