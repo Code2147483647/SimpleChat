@@ -1,4 +1,4 @@
-const Message = require('../../enterprise_business_rules/entities/message');
+const Message = require('../../enterprise_business_rules/entities/Message');
 const {ROOM_NAME, SOCKET_EVENT}= require('../../constDefine');
 
 async function SendMessage(message, {ioWrapper, socketClient}) {
