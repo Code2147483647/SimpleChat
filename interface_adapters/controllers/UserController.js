@@ -34,7 +34,8 @@ class UserController {
             const user = await Login(email, password, {userRepository});
             req.session.user = {
                 id: user.id,
-                name: user.name
+                name: user.name,
+                role: user.role
             };
 
             // for ejs
