@@ -6,7 +6,7 @@ demo accounts:
 
 acc/pwd
 
-admin: admin@myAdmin.com Aa12345678!!
+admin: admin@myAdmin.com 111111
 
 member: testUI1@g.com/111111
 
